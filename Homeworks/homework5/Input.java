@@ -20,4 +20,14 @@ public class Input {
 
     return info;
   }
+
+
+  public String getExperienceInfo() {
+    Scanner scanner = new Scanner(System.in);
+    String info;
+    System.out.print("Введите опыт работника: ");
+    info = scanner.nextLine();
+
+    return info;
+  }
 }

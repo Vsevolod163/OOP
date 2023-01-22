@@ -14,5 +14,10 @@ public class Model {
             String info = in.getStaffInfo();
             infrastructure.search(info);
         }
+        if (number == 3) {
+            String experience = in.getExperienceInfo();
+            int result = Integer.parseInt(experience);
+            infrastructure.searchExperience(result);
+        }
     }
 }

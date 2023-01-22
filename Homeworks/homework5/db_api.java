@@ -1,5 +1,6 @@
 package Homeworks.homework5;
 
+
 import java.util.ArrayList;
 
 class Infrastructure {
@@ -15,7 +16,7 @@ class Infrastructure {
 
   public String getAllInfo(int idStaff) {
     Staff staff = db.staff.get(idStaff - 1);
-
+    
     return String.format("id: %s, First Name: %s, Last Name: %s, Phone Number: %s, Adress: %s, Experience: %s",
         staff.id,
         staff.firstName,
@@ -23,6 +24,27 @@ class Infrastructure {
         staff.telephone,
         staff.adress,
         staff.experience);
+  }
+
+  public ArrayList findExperience() {
+    ArrayList<Integer> array = new ArrayList<>();
+    
+    for (int i = 0; i < db.staff.size(); i++) {
+      Staff staff = db.staff.get(i);
+      array.add(staff.experience);
+    }
+    System.out.println(array);
+
+    return array;
+  }
+
+  public void searchExperience(int experience) {
+    ArrayList<Integer> a = findExperience();
+    for (int i = 0; i < a.size(); i++) {
+      if (a.get(i) >= experience) {
+        System.out.println(getAllInfo(i + 1));
+      }
+    }
   }
 
   public void search(String word) {
@@ -45,6 +67,7 @@ class Infrastructure {
   
 
   Db init() {
+   
     db = new Db();
     Staff staff1 = new Staff(1, "Kostya", "Kovalev", "+79263521243", "Novo-Sadovaya 17", 5);
     Staff staff2 = new Staff(2, "Mihail", "Denisov", "+79811240952", "Samarskaya 9", 3);
@@ -61,7 +84,6 @@ class Infrastructure {
     db.staff.add(staff5);
     db.staff.add(staff6);
     db.staff.add(staff7);
-
     return db;
   }
 
@@ -79,7 +101,7 @@ class Staff {
   String telephone;
   String adress;
   int experience;
-
+  
   public Staff(int id, String firstName, String lastName, String telephone, String addres, int experience) {
     this.id = id;
     this.firstName = firstName;
