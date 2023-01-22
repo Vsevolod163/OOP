@@ -33,7 +33,6 @@ class Infrastructure {
       Staff staff = db.staff.get(i);
       array.add(staff.experience);
     }
-    System.out.println(array);
 
     return array;
   }
